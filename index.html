@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/calc.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo IMC</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="nav">
+                <img src="assets/images/logo.png" alt="logo" width="100" height="100">
+            </div>
+            <div class="box">
+                <h1>Calculadora IMC</h1>
+                <div class="input-box">
+                    <div class="input-group">
+                        <span>*Peso: <small>(ex.: 51,4)</small></span>
+                        <input type="number" name="" id="kg" class="numero-mascara-peso" maxlength="4">
+                        <span>*Altura: <small>(ex.: 1,60)</small></span>
+                        <input type="number" name="" id="alt" class="numero-mascara">
+                        <button onclick="calcular()" oninput="format()">Calcular</button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="class">
+                        <h1 id="classification"></h1>
+                        <p id="resultado"></p>
+                        <p id="exe"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <h1>O que é IMC</h1>
+                <p>O índice de massa corporal (IMC) é uma medida que relaciona o peso e a altura de uma pessoa e é
+                    frequentemente usada para determinar se alguém está dentro de um peso saudável. Essa medida foi
+                    desenvolvida há mais de 150 anos por um matemático belga chamado Adolphe Quetelet, que acreditava
+                    que a relação entre o peso e a altura de uma pessoa poderia ser usada como um indicador de saúde.
+
+                    Inicialmente, o IMC era conhecido como "Índice de Quetelet" e era usado principalmente em estudos
+                    demográficos. Foi só na década de 1980 que a Organização Mundial da Saúde (OMS) começou a promover o
+                    uso do IMC como uma medida padronizada de obesidade.
+
+                    Hoje em dia, o IMC é amplamente utilizado em todo o mundo para ajudar a avaliar o estado nutricional
+                    das pessoas. Ele é calculado dividindo o peso em quilogramas pela altura em metros elevada ao
+                    quadrado. O resultado é um número que indica se uma pessoa está abaixo do peso saudável, dentro do
+                    peso saudável, acima do peso saudável ou obesa.
+
+                    Embora o IMC seja amplamente utilizado, ele não é perfeito. Por exemplo, ele não leva em
+                    consideração a composição corporal de uma pessoa, como a quantidade de gordura e músculo. Portanto,
+                    é possível que duas pessoas com o mesmo IMC tenham composições corporais diferentes. No entanto,
+                    apesar de suas limitações, o IMC continua sendo uma medida útil e amplamente utilizada para avaliar
+                    a obesidade e a saúde em geral.
+
+                    Em resumo, o IMC é uma medida que relaciona o peso e a altura de uma pessoa e é usada para
+                    determinar se alguém está dentro de um peso saudável. Embora tenha suas limitações, o IMC é
+                    amplamente utilizado em todo o mundo para ajudar a avaliar a obesidade e a saúde em geral.</p>
+            </div>
+            <div class="how">
+                <h1>Como calcular o IMC</h1>
+                <p>Calcular o índice de massa corporal (IMC) é um processo relativamente simples que envolve apenas dois
+                    fatores: o peso e a altura da pessoa. Aqui está uma explicação passo a passo de como calcular o seu
+                    próprio IMC:
+
+                    1 - Meça sua altura: Comece medindo sua altura em metros. Para fazer isso, fique em pé com os pés juntos
+                    e as costas retas contra uma parede. Use uma fita métrica para medir do topo da cabeça até o chão.
+
+                    2 - Pese-se: Em seguida, pese-se em quilogramas. Se você não tem acesso a uma balança que pese em
+                    quilogramas, pode usar uma conversão online para converter o peso em libras para quilogramas.
+
+                    3 - Calcule o IMC: Agora que você tem sua altura e peso, é hora de calcular o IMC. Para fazer isso,
+                    divida o seu peso em quilogramas pela sua altura em metros elevada ao quadrado. A fórmula é: IMC =
+                    peso (kg) / altura² (m²).
+
+                    Por exemplo, se você tem 1,70 metros de altura e pesa 70 quilos, o cálculo seria: 70 / (1,70 x 1,70)
+                    = 24,2. Isso significa que seu IMC é 24,2.
+
+                    1 - Interprete os resultados: Após calcular o seu IMC, é importante interpretar os resultados. Um IMC
+                    entre 18,5 e 24,9 é considerado saudável, enquanto um IMC abaixo de 18,5 indica que uma pessoa está
+                    abaixo do peso saudável e um IMC acima de 24,9 indica que a pessoa está com excesso de peso.
+
+                    É importante lembrar que o IMC não é uma medida perfeita, e outras medidas podem ser necessárias
+                    para avaliar a saúde de uma pessoa. Por exemplo, o IMC não leva em consideração a composição
+                    corporal de uma pessoa, como a quantidade de músculo e gordura, que pode afetar os resultados.
+
+                    No entanto, calcular o IMC é uma maneira rápida e fácil de avaliar se uma pessoa está dentro de um
+                    peso saudável e pode ser um bom ponto de partida para uma discussão sobre a saúde geral com um
+                    profissional de saúde qualificado.</p>
+            </div>
+
+            <div class="footer">
+                <h6>Emagrecimento Vendas LTDA, Todos os direitos reservados 2023</h6>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+            $('.numero-mascara').mask('0.00', { reverse: true });
+            $('.numero-mascara-peso').mask('000.00', { reverse: true });
+        });
+    </script>
+    
+</body>
+
+</html>
